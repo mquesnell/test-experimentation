@@ -28,7 +28,10 @@ export default function ProTip() {
   const classes = useStyles();
   return (
     <Typography className={classes.root} color="textSecondary">
-      <LightBulbIcon className={classes.lightBulb} />
+      <LightBulbIcon
+        className={classes.lightBulb}
+        data-testid="light-bulb-icon"
+      />
       Pro tip: See more{" "}
       <Link href="https://material-ui.com/getting-started/templates/">
         templates

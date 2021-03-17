@@ -1,15 +1,11 @@
 /** @format */
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 describe("App", () => {
   beforeEach(() => {
     render(<App />);
-  });
-
-  test("show the dom", () => {
-    screen.debug();
   });
 
   test("renders title", () => {
@@ -19,8 +15,21 @@ describe("App", () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  test("renders the ok button", () => {
-    const buttonEl = screen.getByText("ok");
-    expect(buttonEl).toBeInTheDocument();
+  test("OK button click", () => {
+    // Verify that when clicked, the OK button updates the
+    // response text field
+    expect(screen.getByText("no response")).toBeInTheDocument();
+    const btn = screen.getByRole("button", { name: "ok" });
+    fireEvent.click(btn);
+
+    expect(
+      screen.getByText("You clicked the button 1 time(s)")
+    ).toBeInTheDocument();
+
+    fireEvent.click(btn);
+
+    expect(
+      screen.getByText("You clicked the button 2 time(s)")
+    ).toBeInTheDocument();
   });
 });
