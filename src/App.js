@@ -7,6 +7,8 @@ import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import ProTip from "./ProTip";
 import Button from "@material-ui/core/Button";
+import CheckIcon from "@material-ui/icons/Check";
+import DropDown from "./DropDown";
 
 function Copyright() {
   return (
@@ -36,11 +38,16 @@ export default function App() {
         <Typography variant="h4" component="h1" gutterBottom>
           Example Material-UI/React Application
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleButton}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleButton}
+          startIcon={<CheckIcon data-testid="check-icon-on-ok-btn" />}>
           ok
         </Button>
         <ProTip />
         <Typography>{response}</Typography>
+        <DropDown />
         <Copyright />
       </Box>
     </Container>

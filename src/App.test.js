@@ -19,6 +19,8 @@ describe("App", () => {
     // Verify that when clicked, the OK button updates the
     // response text field
     expect(screen.getByText("no response")).toBeInTheDocument();
+    expect(screen.getByTestId("check-icon-on-ok-btn")).toBeInTheDocument();
+
     const btn = screen.getByRole("button", { name: "ok" });
     fireEvent.click(btn);
 
@@ -32,4 +34,8 @@ describe("App", () => {
       screen.getByText("You clicked the button 2 time(s)")
     ).toBeInTheDocument();
   });
+
+  // test("show the dom", () => {
+  //   screen.debug();
+  // });
 });
