@@ -2,6 +2,7 @@
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
+import userEvent from "@testing-library/user-event";
 
 describe("App", () => {
   beforeEach(() => {
@@ -35,6 +36,29 @@ describe("App", () => {
     ).toBeInTheDocument();
   });
 
+  test("the required text fields are on the page", () => {
+    expect(screen.getByLabelText("City")).toBeInTheDocument();
+    expect(screen.getByLabelText("County")).toBeInTheDocument();
+  });
+
+  test("the text fields accept input", () => {
+    const city = screen.getByRole("textbox", { name: "City" });
+    userEvent.type(city, "Rivendelle");
+    expect(screen.getByLabelText("City").value).toBe("Rivendelle");
+
+    const county = screen.getByRole("textbox", { name: "County" });
+    userEvent.type(county, "Calaveras");
+    expect(screen.getByLabelText("County").value).toBe("Calaveras");
+  });
+
+  test("the radio group and buttons are present", () => {
+    expect(screen.getByText("Like Tomatoes?")).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: /no/i })).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: /yes/i })).toBeInTheDocument();
+
+    // TODO: test the value of the radio group
+    // TODO: test that the radio buttons can be clicked
+  });
   // test("show the dom", () => {
   //   screen.debug();
   // });
