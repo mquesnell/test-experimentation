@@ -55,10 +55,29 @@ describe("App", () => {
     expect(screen.getByText("Like Tomatoes?")).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: /no/i })).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: /yes/i })).toBeInTheDocument();
-
-    // TODO: test the value of the radio group
-    // TODO: test that the radio buttons can be clicked
   });
+
+  test("the radio group has the proper default value", () => {
+    expect(screen.getByRole("radio", { name: /no/i }).checked).toBe(true);
+    expect(screen.getByRole("radio", { name: /yes/i }).checked).toBe(false);
+  });
+
+  test("the radio buttons can be clicked", () => {
+    fireEvent.click(screen.getByTestId("radio-yes"), {
+      target: { checked: true },
+    });
+
+    expect(screen.getByRole("radio", { name: /no/i }).checked).toBe(false);
+    expect(screen.getByRole("radio", { name: /yes/i }).checked).toBe(true);
+
+    fireEvent.click(screen.getByTestId("radio-no"), {
+      target: { checked: true },
+    });
+
+    expect(screen.getByRole("radio", { name: /no/i }).checked).toBe(true);
+    expect(screen.getByRole("radio", { name: /yes/i }).checked).toBe(false);
+  });
+
   // test("show the dom", () => {
   //   screen.debug();
   // });

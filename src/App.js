@@ -83,8 +83,16 @@ export default function App() {
             onChange={(event) => {
               setLikeTomatoes(event.target.value);
             }}>
-            <FormControlLabel value="no" control={<Radio />} label="No" />
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel
+              value="no"
+              control={<Radio inputProps={{ "data-testid": "radio-no" }} />}
+              label="No"
+            />
+            <FormControlLabel
+              value="yes"
+              control={<Radio inputProps={{ "data-testid": "radio-yes" }} />}
+              label="Yes"
+            />
           </RadioGroup>
         </FormControl>
         <Copyright />
