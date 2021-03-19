@@ -19,7 +19,7 @@ describe("App", () => {
   test("OK button click", () => {
     // Verify that when clicked, the OK button updates the
     // response text field
-    expect(screen.getByText("no response")).toBeInTheDocument();
+    expect(screen.getByText(/click the button/i)).toBeInTheDocument();
     expect(screen.getByTestId("check-icon-on-ok-btn")).toBeInTheDocument();
 
     const btn = screen.getByRole("button", { name: "ok" });
@@ -34,6 +34,14 @@ describe("App", () => {
     expect(
       screen.getByText("You clicked the button 2 time(s)")
     ).toBeInTheDocument();
+  });
+
+  test("the country drop down appears", () => {
+    expect(screen.getByLabelText("Country")).toBeInTheDocument();
+  });
+
+  test("the oh, Canada drop down appears", () => {
+    expect(screen.getByLabelText(/oh, canada/i)).toBeInTheDocument();
   });
 
   test("the required text fields are on the page", () => {
@@ -76,6 +84,32 @@ describe("App", () => {
 
     expect(screen.getByRole("radio", { name: /no/i }).checked).toBe(true);
     expect(screen.getByRole("radio", { name: /yes/i }).checked).toBe(false);
+  });
+
+  test("the select comparison", () => {
+    expect(screen.getByText("MUI Select", { exact: true })).toBeInTheDocument();
+    expect(
+      screen.getByText("Native Select", { exact: true })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("TextField MUI Select", { exact: true })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("TextField Native Select", { exact: true })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole("button", { name: /change the value of none/i })
+    ).toBeInTheDocument();
+
+    // TODO: test that the label appears below the button
+    // TODO: test the initial values of the selects
+    // TODO: change one of the selects and make sure everything else changes
+    // TODO: click the button and select none
+  });
+
+  test("the pro tip appears", () => {
+    expect(screen.getByText(/pro tip:/i)).toBeInTheDocument();
   });
 
   // test("show the dom", () => {

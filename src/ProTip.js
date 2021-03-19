@@ -32,11 +32,11 @@ export default function ProTip() {
         className={classes.lightBulb}
         data-testid="light-bulb-icon"
       />
-      Pro tip: See more{" "}
-      <Link href="https://material-ui.com/getting-started/templates/">
-        templates
+      Pro tip: Check out the{" "}
+      <Link href="https://testing-library.com/docs/">
+        React Testing Library
       </Link>{" "}
-      on the Material-UI documentation.
+      documentation.
     </Typography>
   );
 }

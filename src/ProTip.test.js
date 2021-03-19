@@ -14,7 +14,7 @@ describe("ProTip", () => {
   });
 
   test("renders a link to templates", () => {
-    const link = screen.getByRole("link", { name: /templates/i });
+    const link = screen.getByRole("link", { name: /react testing library/i });
     expect(link).toBeInTheDocument();
   });
 
