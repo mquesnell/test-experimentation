@@ -218,6 +218,7 @@ export default function App() {
                       Age
                     </InputLabel>
                     <Select
+                      data-testid="mui-select"
                       labelId="demo-simple-select-outlined-label"
                       id="demo-simple-select-outlined"
                       value={age}
@@ -248,6 +249,7 @@ export default function App() {
                       onChange={handleChange}
                       label="Age"
                       inputProps={{
+                        "data-testid": "mui-native-select",
                         name: "age",
                         id: "outlined-age-native-simple",
                       }}>
@@ -267,6 +269,7 @@ export default function App() {
                   <FormControl className={classes.formControl}>
                     <TextField
                       id="tf-simple-select"
+                      data-testid="tf-mui-select"
                       select
                       label="Age"
                       value={age}
@@ -288,12 +291,15 @@ export default function App() {
                   <FormControl className={classes.formControl}>
                     <TextField
                       id="tf-native-select"
+                      data-testid="tf-native-select"
                       select
                       label="Age"
                       value={age}
                       variant="outlined"
                       onChange={handleChange}
-                      SelectProps={{ native: true }}>
+                      SelectProps={{
+                        native: true,
+                      }}>
                       <option value={defaultSelectValue}>None</option>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>

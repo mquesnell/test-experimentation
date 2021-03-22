@@ -102,9 +102,25 @@ describe("App", () => {
       screen.getByRole("button", { name: /change the value of none/i })
     ).toBeInTheDocument();
 
-    // TODO: test that the label appears below the button
-    // TODO: test the initial values of the selects
+    expect(
+      screen.getByText("Current value for None: none", { exact: true })
+    ).toBeInTheDocument();
+
+    // test the initial values of the selects
+    const ages = screen.getAllByLabelText("Age", { exact: true });
+    expect(ages).toHaveLength(4);
+
+    // test the MUI selects first
+    expect(screen.getByTestId("mui-select")).toHaveTextContent("None");
+    expect(screen.getByTestId("tf-mui-select")).toHaveTextContent("None");
+
+    // This works for the MUI Select component, as long as the test ID is
+    // placed on the input portion of the select component.
+    // However, this does not work with the MUI TextField component used as a select.
+    expect(screen.getByTestId("mui-native-select")).toHaveDisplayValue("None");
+
     // TODO: change one of the selects and make sure everything else changes
+
     // TODO: click the button and select none
   });
 
