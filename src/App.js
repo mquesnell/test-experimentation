@@ -130,7 +130,8 @@ export default function App() {
                 variant="contained"
                 color="primary"
                 onClick={handleButton}
-                startIcon={<CheckIcon data-testid="check-icon-on-ok-btn" />}>
+                startIcon={<CheckIcon data-testid="check-icon-on-ok-btn" />}
+              >
                 ok
               </Button>
               <Typography className={classes.responseText}>
@@ -186,7 +187,8 @@ export default function App() {
               value={likeTomatoes}
               onChange={(event) => {
                 setLikeTomatoes(event.target.value);
-              }}>
+              }}
+            >
               <FormControlLabel
                 value="no"
                 control={<Radio inputProps={{ "data-testid": "radio-no" }} />}
@@ -213,7 +215,8 @@ export default function App() {
                   <Typography>MUI Select</Typography>
                   <FormControl
                     variant="outlined"
-                    className={classes.formControl}>
+                    className={classes.formControl}
+                  >
                     <InputLabel id="demo-simple-select-outlined-label">
                       Age
                     </InputLabel>
@@ -223,7 +226,8 @@ export default function App() {
                       id="demo-simple-select-outlined"
                       value={age}
                       onChange={handleChange}
-                      label="Age">
+                      label="Age"
+                    >
                       <MenuItem value={defaultSelectValue}>
                         <em>None</em>
                       </MenuItem>
@@ -239,7 +243,8 @@ export default function App() {
                   <Typography>Native Select</Typography>
                   <FormControl
                     variant="outlined"
-                    className={classes.formControl}>
+                    className={classes.formControl}
+                  >
                     <InputLabel htmlFor="outlined-age-native-simple">
                       Age
                     </InputLabel>
@@ -252,7 +257,8 @@ export default function App() {
                         "data-testid": "mui-native-select",
                         name: "age",
                         id: "outlined-age-native-simple",
-                      }}>
+                      }}
+                    >
                       <option aria-label="None" value={defaultSelectValue}>
                         None
                       </option>
@@ -274,7 +280,8 @@ export default function App() {
                       label="Age"
                       value={age}
                       variant="outlined"
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                    >
                       <MenuItem value={defaultSelectValue}>
                         <em>None</em>
                       </MenuItem>
@@ -299,7 +306,8 @@ export default function App() {
                       onChange={handleChange}
                       SelectProps={{
                         native: true,
-                      }}>
+                      }}
+                    >
                       <option value={defaultSelectValue}>None</option>
                       <option value={10}>Ten</option>
                       <option value={20}>Twenty</option>
